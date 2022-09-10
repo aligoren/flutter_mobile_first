@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter1/services/character_service.dart';
+import 'package:flutter1/widgets/detail_screen.dart';
 
 import 'models/characters.dart';
 
@@ -85,13 +86,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 return ListTile(
                   onTap: () {
-                    scaffoldMessenger.removeCurrentSnackBar();
-
-                    String houseName = character.actor;
-
-                    scaffoldMessenger.showSnackBar(SnackBar(
-                      content: Text(houseName),
-                    ));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              DetailScreen(character: character),
+                        ));
                   },
                   title: Text(character.name),
                   subtitle: Text(character.house),
